@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react'
 import { Card } from './Card.jsx'
 export const Container = () => {
   
-    const [cards, setCards] = useState([
+    const [roles, setRoles] = useState([
       {
         experience: "ZXhwMDhiMzg1MmUtNmJkOS0xMWVkLWFkYjEtMDZhNDM4ODNmMDBj",
         id: "cm9sMWMwMGQzODgtOWIzMS0xMWVkLThhMTgtMGE2NzZkNzZlMmVh",
@@ -39,7 +39,7 @@ export const Container = () => {
     ])
 
     const moveCard = useCallback((dragIndex, hoverIndex) => {
-      setCards((prevCards) =>
+      setRoles((prevCards) =>
         update(prevCards, {
           $splice: [
             [dragIndex, 1],
@@ -51,7 +51,7 @@ export const Container = () => {
 
     return (
       <>
-        <div className="">{cards && cards.map((card, i) => (
+        <div className="">{roles && roles.map((card, i) => (
           <Card
           key={card.id}
           index={i}

@@ -60,17 +60,16 @@ export const Card = ({ id, name, index, roleType, moveCard }) => {
       isDragging: monitor.isDragging(),
     }),
   })
-  const opacity = isDragging ? 0 : 1
+
   drag(drop(ref))
 
-  console.log(index);
-
   return (
-    <div ref={ref} style={{  opacity }} className={classNames(
+    <div ref={ref} className={classNames(
       'w-56 border border-gray-900 mb-2 px-2 py-2 cursor-pointer',
       roleType === 'SIGNER' && 'bg-blue-400 text-blue-900',
       roleType === 'WITNESS' && 'bg-yellow-400 text-yellow-900',
       roleType === 'APPROVER' && 'bg-green-400 text-green-900',
+      isDragging && 'opacity-30'
 
     )} data-handler-id={handlerId}>
       {name}
