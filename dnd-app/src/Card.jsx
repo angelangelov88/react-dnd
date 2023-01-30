@@ -1,14 +1,9 @@
 import { useRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import { ItemTypes } from './ItemTypes.js'
-const style = {
-  border: '1px dashed gray',
-  padding: '0.5rem 1rem',
-  marginBottom: '.5rem',
-  backgroundColor: 'white',
-  cursor: 'move',
-}
-export const Card = ({ id, text, index, moveCard }) => {
+import classNames from 'classnames';
+
+export const Card = ({ id, name, index, roleType, moveCard }) => {
   const ref = useRef(null)
   const [{ handlerId }, drop] = useDrop({
     accept: ItemTypes.CARD,
@@ -67,9 +62,18 @@ export const Card = ({ id, text, index, moveCard }) => {
   })
   const opacity = isDragging ? 0 : 1
   drag(drop(ref))
+
+  console.log(index);
+
   return (
-    <div ref={ref} style={{ ...style, opacity }} data-handler-id={handlerId}>
-      {text}
+    <div ref={ref} style={{  opacity }} className={classNames(
+      'w-56 border border-gray-900 mb-2 px-2 py-2 cursor-pointer',
+      roleType === 'SIGNER' && 'bg-blue-400 text-blue-900',
+      roleType === 'WITNESS' && 'bg-yellow-400 text-yellow-900',
+      roleType === 'APPROVER' && 'bg-green-400 text-green-900',
+
+    )} data-handler-id={handlerId}>
+      {name}
     </div>
   )
 }

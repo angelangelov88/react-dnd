@@ -1,9 +1,6 @@
 import update from 'immutability-helper'
 import { useCallback, useState } from 'react'
 import { Card } from './Card.jsx'
-const style = {
-  width: 400,
-}
 export const Container = () => {
   
     const [cards, setCards] = useState([
@@ -40,6 +37,7 @@ export const Container = () => {
         signerParent: null
       },
     ])
+
     const moveCard = useCallback((dragIndex, hoverIndex) => {
       setCards((prevCards) =>
         update(prevCards, {
@@ -50,20 +48,20 @@ export const Container = () => {
         }),
       )
     }, [])
-    const renderCard = useCallback((card, index) => {
-      return (
-        <Card
-          key={card.id}
-          index={index}
-          id={card.id}
-          text={card.name}
-          moveCard={moveCard}
-        />
-      )
-    }, [moveCard])
+
     return (
       <>
-        <div style={style}>{cards.map((card, i) => renderCard(card, i))}</div>
+        <div className="">{cards && cards.map((card, i) => (
+          <Card
+          key={card.id}
+          index={i}
+          id={card.id}
+          name={card.name}
+          roleType={card.roleType}
+          moveCard={moveCard}
+        />
+          ))}
+        </div>
       </>
     )
   
