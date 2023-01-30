@@ -3,7 +3,7 @@ import { useDrag, useDrop } from 'react-dnd'
 import { ItemTypes } from './ItemTypes.js'
 import classNames from 'classnames';
 
-export const Card = ({ id, name, index, roleType, moveCard }) => {
+const Card = ({ id, name, index, roleType, moveCard }) => {
   const ref = useRef(null)
   const [{ handlerId }, drop] = useDrop({
     accept: ItemTypes.CARD,
@@ -53,26 +53,27 @@ export const Card = ({ id, name, index, roleType, moveCard }) => {
   })
   const [{ isDragging }, drag] = useDrag({
     type: ItemTypes.CARD,
-    item: () => {
-      return { id, index }
-    },
+    item: () => ({ id, index }),
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
-  })
+  });
 
   drag(drop(ref))
 
+  console.log(drop(ref));
   return (
     <div ref={ref} className={classNames(
       'w-56 border border-gray-900 mb-2 px-2 py-2 cursor-pointer',
       roleType === 'SIGNER' && 'bg-blue-400 text-blue-900',
       roleType === 'WITNESS' && 'bg-yellow-400 text-yellow-900',
       roleType === 'APPROVER' && 'bg-green-400 text-green-900',
-      isDragging && 'opacity-30'
-
+      isDragging && 'opacity-30',
     )} data-handler-id={handlerId}>
       {name}
     </div>
   )
 }
+
+export default Card;
+export { Card };
