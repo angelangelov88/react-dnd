@@ -79,7 +79,8 @@ export const Container = () => {
     // }, [roles]);
   
     return (
-      <>
+      <div className="m-5">
+        <h1>react-dnd</h1>
         <div className="">{roles && roles.map((card, i) => (
           <Card
           key={card.id}
@@ -91,7 +92,7 @@ export const Container = () => {
         />
           ))}
         </div>
-      </>
+      </div>
     )
   
 }
