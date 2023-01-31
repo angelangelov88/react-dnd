@@ -7,12 +7,14 @@ const Card = ({ id, name, index, roleType, moveCard }) => {
   const ref = useRef(null)
   const [{ handlerId }, drop] = useDrop({
     accept: ItemTypes.CARD,
-    collect(monitor) {
+    collect: (monitor) => {
       return {
-        handlerId: monitor.getHandlerId(),
+       isOver: monitor.isOver(),
+       canDrop: monitor.canDrop(),
+       handlerId: monitor.getHandlerId(),
       }
     },
-    hover(item, monitor) {
+    hover: (item, monitor) => {
       if (!ref.current) {
         return
       }
@@ -61,16 +63,19 @@ const Card = ({ id, name, index, roleType, moveCard }) => {
 
   drag(drop(ref))
 
-  console.log(drop(ref));
+  // console.log(index, name);
   return (
-    <div ref={ref} className={classNames(
+    <div className="flex gap-3 items-center">
+      <div className="pl-4">
+      {index + 1}
+      </div>
+      <div ref={ref} className={classNames(
       'w-56 border border-gray-900 mb-2 px-2 py-2 cursor-pointer',
       roleType === 'SIGNER' && 'bg-blue-400 text-blue-900',
       roleType === 'WITNESS' && 'bg-yellow-400 text-yellow-900',
       roleType === 'APPROVER' && 'bg-green-400 text-green-900',
       isDragging && 'opacity-30',
-    )} data-handler-id={handlerId}>
-      {name}
+    )} data-handler-id={handlerId}>{name}</div> 
     </div>
   )
 }

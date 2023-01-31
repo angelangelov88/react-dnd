@@ -3,6 +3,7 @@ import { useCallback, useState } from 'react'
 import { Card } from './Card.jsx'
 export const Container = () => {
   
+  const [role, setRole] = useState([]);
     const [roles, setRoles] = useState([
       {
         experience: "ZXhwMDhiMzg1MmUtNmJkOS0xMWVkLWFkYjEtMDZhNDM4ODNmMDBj",
@@ -10,7 +11,7 @@ export const Container = () => {
         name: "New hdhfdhjffg",
         roleType: "SIGNER",
         signerIndex: "1",
-        signerParent: null
+        signerParent: null,
       },
       {
         experience: "ZXhwYWY0ZmRiZTEtNTUxOC0xMWVkLTlmMGMtMDJmYWMzNDAyNDM4",
@@ -38,17 +39,45 @@ export const Container = () => {
       },
     ])
 
+
     const moveCard = useCallback((dragIndex, hoverIndex) => {
-      setRoles((prevCards) =>
-        update(prevCards, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, prevCards[dragIndex]],
-          ],
-        }),
-      )
+      console.log(roles);
+      console.log('dragIndex', dragIndex);
+      console.log('hoverIndex', hoverIndex);
+      setRoles((prevCards) => update(prevCards, {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, prevCards[dragIndex]],
+        ],
+      }),
+      );
+      console.log(roles);
+      // roles.map((card, index) => {
+      //   console.log('card1', card);
+      //   let { signerIndex } = card;
+      //   signerIndex = dragIndex + 1;
+      //   console.log('card', {...card, signerIndex});
+      //   setRole({...card, signerIndex});
+      //   console.log('role', role);
+      // });
     }, [])
 
+    // const moveCard = useCallback((dragIndex, hoverIndex) => {
+    //   const newCards = roles;
+    //   const dragCard = newCards[dragIndex];
+    //   newCards.splice(dragIndex, 1);
+    //   newCards.splice(hoverIndex, 0, dragCard);
+    //   newCards.map((card, index) => {
+    //     let { signerIndex } = card;
+    //     signerIndex = index + 1;
+    //     console.log('signerIndex', signerIndex);
+    //     console.log({ ...card, signerIndex });
+    //   })  
+    //   setRoles(newCards);
+    //   console.log('newCards', newCards);
+    //   console.log('roles', roles);
+    // }, [roles]);
+  
     return (
       <>
         <div className="">{roles && roles.map((card, i) => (
