@@ -1,5 +1,5 @@
 import update from 'immutability-helper'
-import { useCallback, useState } from 'react'
+import { useCallback, useState, useEffect } from 'react'
 import { Card } from './Card.jsx'
 export const Container = () => {
   
@@ -39,19 +39,19 @@ export const Container = () => {
       },
     ])
 
+    useEffect(() => {
+      console.log('2', roles);
+    }, [roles]);
 
     const moveCard = useCallback((dragIndex, hoverIndex) => {
-      console.log(roles);
-      console.log('dragIndex', dragIndex);
-      console.log('hoverIndex', hoverIndex);
-      setRoles((prevCards) => update(prevCards, {
-        $splice: [
-          [dragIndex, 1],
-          [hoverIndex, 0, prevCards[dragIndex]],
-        ],
-      }),
-      );
-      console.log(roles);
+      setRoles((prevCards) => 
+        update(prevCards, {
+          $splice: [
+            [dragIndex, 1],
+            [hoverIndex, 0, prevCards[dragIndex]],
+          ],
+        }),
+      )
       // roles.map((card, index) => {
       //   console.log('card1', card);
       //   let { signerIndex } = card;
@@ -60,37 +60,21 @@ export const Container = () => {
       //   setRole({...card, signerIndex});
       //   console.log('role', role);
       // });
-    }, [])
-
-    // const moveCard = useCallback((dragIndex, hoverIndex) => {
-    //   const newCards = roles;
-    //   const dragCard = newCards[dragIndex];
-    //   newCards.splice(dragIndex, 1);
-    //   newCards.splice(hoverIndex, 0, dragCard);
-    //   newCards.map((card, index) => {
-    //     let { signerIndex } = card;
-    //     signerIndex = index + 1;
-    //     console.log('signerIndex', signerIndex);
-    //     console.log({ ...card, signerIndex });
-    //   })  
-    //   setRoles(newCards);
-    //   console.log('newCards', newCards);
-    //   console.log('roles', roles);
-    // }, [roles]);
+    }, []);
   
     return (
       <div className="m-5">
         <h1>react-dnd</h1>
-        <div className="">{roles && roles.map((card, i) => (
+        <div>{roles.map((card, i) => (
           <Card
-          key={card.id}
-          index={i}
-          id={card.id}
-          name={card.name}
-          roleType={card.roleType}
-          moveCard={moveCard}
-        />
-          ))}
+            key={card.id}
+            index={i}
+            id={card.id}
+            name={card.name}
+            roleType={card.roleType}
+            moveCard={moveCard}
+          />
+        ))}
         </div>
       </div>
     )
