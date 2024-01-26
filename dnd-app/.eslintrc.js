@@ -1,49 +1,49 @@
 module.exports = {
-	"env": {
-		"browser": true,
-		"es2021": true
+	'env': {
+		'browser': true,
+		'es2021': true
 	},
-	"extends": [
-		"eslint:recommended",
-		"plugin:react/recommended"
+	'extends': [
+		'eslint:recommended',
+		'plugin:react/recommended'
 	],
-	"overrides": [
+	'overrides': [
 		{
-			"env": {
-				"node": true
+			'env': {
+				'node': true
 			},
-			"files": [
-				".eslintrc.{js,cjs}"
+			'files': [
+				'.eslintrc.{js,cjs}'
 			],
-			"parserOptions": {
-				"sourceType": "script"
+			'parserOptions': {
+				'sourceType': 'script'
 			}
 		}
 	],
-	"parserOptions": {
-		"ecmaVersion": "latest",
-		"sourceType": "module"
+	'parserOptions': {
+		'ecmaVersion': 'latest',
+		'sourceType': 'module'
 	},
-	"plugins": [
-		"react"
+	'plugins': [
+		'react'
 	],
-	"rules": {
-		"react/prop-types": "off",
-		"indent": [
-			"error",
-			"tab"
+	'rules': {
+		'react/prop-types': 'off',
+		'indent': [
+			'error',
+			'tab'
 		],
-		"linebreak-style": [
-			"error",
-			"unix"
+		'linebreak-style': [
+			'error',
+			'unix'
 		],
-		"quotes": [
-			"error",
-			"double"
+		'quotes': [
+			'error',
+			'single'
 		],
-		"semi": [
-			"error",
-			"always"
+		'semi': [
+			'error',
+			'always'
 		]
 	}
 };

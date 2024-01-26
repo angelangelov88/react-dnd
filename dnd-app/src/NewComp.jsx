@@ -1,44 +1,43 @@
-import React from "react";
-import "./index.css";
-import { ResizableBox } from "react-resizable";
-import "react-resizable/css/styles.css"; // Import the styles for the resizable component
+import React from 'react';
+import './index.css';
+import { Resizable } from 're-resizable';
 
 const NewComp = () => {
-	const onResize = (event, { size }) => {
-		console.log("New size:", size);
-	};
 
 	return (
-		<div>
+		<div className="border border-red-50">
 			<button 
-				onClick={() => console.log("clicked")}
+				onClick={() => console.log('clicked')}
 				onKeyDown={(e) => {
-					if (e.key === "Enter") {
-						console.log("enter");
+					if (e.key === 'Enter') {
+						console.log('enter');
 					}
 				}}
 			>
-				<ResizableBox
-					width={200}
-					height={200}
-					onResize={onResize}
-					draggableOpts={{ grid: [25, 25] }}
-					// minConstraints={[10, 10]}
-					// maxConstraints={[300, 300]}
-					lockAspectRatio={false}
-					axis="both"
-					className='m-10 bg-emerald-200'
+				<Resizable
+					defaultSize={{
+						width: 20,
+						height: 20,
+					}}
+					handleStyles={{
+						bottomRight: { backgroundColor: 'white', border: '1px solid orange', width: '8px', height: '8px', bottom: '-3px', right: '-3px'},
+					}}
+					enable={{
+						top: false,
+						right: false,
+						bottom: false,
+						left: false,
+						topRight: false,
+						bottomRight: true,
+						bottomLeft: false,
+						topLeft: false,
+					}}
+					className="ml-32 mr-10 my-10 bg-emerald-100 absolute"
 				>
-					{/* <div 
-      className='p-5 bg-emerald-200'
-      style={{ 
-        // border: '1px solid #ddd', padding: '10px', boxSizing: 'border-box' 
-        }}> */}
-        v
-					{/* </div> */}
-				</ResizableBox>
-			</button>
+v
+				</Resizable>
 
+			</button>
 		</div>
 	);
 };

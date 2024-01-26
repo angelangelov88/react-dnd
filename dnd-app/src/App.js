@@ -1,8 +1,8 @@
-import React from "react";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { Container } from "./Container";
-import NewComp from "./NewComp";
+import React from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { Container } from './Container';
+import NewComp from './NewComp';
 
 function App() {
 	return (
