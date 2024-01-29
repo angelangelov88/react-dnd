@@ -1,8 +1,8 @@
 import React from 'react';
 import update from 'immutability-helper';
 import { useCallback, useState, useEffect } from 'react';
-import { Card } from './Card.jsx';
-export const Container = () => {
+import { CardBoth } from './CardBoth.jsx';
+export const BothContainer = () => {
   
 	const [roles, setRoles] = useState([
 		{
@@ -64,9 +64,9 @@ export const Container = () => {
   
 	return (
 		<div className="m-5">
-			<h1>react-dnd</h1>
+			<h1>react-dnd + re-resizable</h1>
 			<div>{roles.map((card, i) => (
-				<Card
+				<CardBoth
 					key={card.id}
 					index={i}
 					id={card.id}

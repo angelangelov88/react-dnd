@@ -2,10 +2,11 @@ import React from 'react';
 import './index.css';
 import { Resizable } from 're-resizable';
 
-const NewComp = () => {
+const ResizableComp = () => {
 
 	return (
 		<div className="border border-red-50">
+			<h3>Resizable div using re-resizable</h3>
 			<button 
 				onClick={() => console.log('clicked')}
 				onKeyDown={(e) => {
@@ -42,4 +43,4 @@ v
 	);
 };
 
-export default NewComp;
+export default ResizableComp;
