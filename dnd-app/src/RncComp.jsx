@@ -8,8 +8,8 @@ const RncComp = () => {
 			width: 20,
 			height: 20,
 			type: 'checkbox',
-			x: 0,
-			y: 0,
+			x: 150,
+			y: 50,
 			value:'✔',
 		},
 		{
@@ -17,8 +17,8 @@ const RncComp = () => {
 			width: 150,
 			height: 20,
 			type: 'signature',
-			x: 150,
-			y: 0,
+			x: 250,
+			y: 100,
 			value:'2',
 		},
 		{
@@ -26,14 +26,15 @@ const RncComp = () => {
 			width: 200,
 			height: 20,
 			type: 'text',
-			x: 300,
-			y: 50,
+			x: 350,
+			y: 150,
 			value:'longText',
 		}
 	];
 
 	return ( 
 		<div>
+			<h3>Draggable and resizable fields using react-rnc</h3>
 			{fields.map((field) => (
 				<Rnd
 					key={field.id}
