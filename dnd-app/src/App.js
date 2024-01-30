@@ -5,6 +5,8 @@ import { BothContainer } from './BothContainer';
 import ResizableComp from './ResizableComp';
 import { Container } from './Container';
 import RncComp from './RncComp';
+import './index.css';
+import WebkitResizer from './WebkitResizer';
 
 function App() {
 	return (
@@ -15,6 +17,7 @@ function App() {
 			</DndProvider>
 			<ResizableComp />
 			<RncComp />
+			<WebkitResizer />
 		</div>
 	);
 }

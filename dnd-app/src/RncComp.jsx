@@ -33,24 +33,46 @@ const RncComp = () => {
 	];
 
 	return ( 
-		<div>
-			<h3>Draggable and resizable fields using react-rnc</h3>
-			{fields.map((field) => (
-				<Rnd
-					key={field.id}
-					default={{
-						x: field?.x,
-						y: field?.y,
-						width: field?.width,
-						height: field?.height,
-					}}
-					className='bg-green-200'
-				>
-					{field?.value}
-				</Rnd>
-			))}
-		</div>
+		<>
+			<div className='h-64'>
+				<h3>Draggable and resizable fields using react-rnc</h3>
+				{fields.map((field) => (
+					<Rnd
+						key={field.id}
+						default={{
+							x: field?.x,
+							y: field?.y,
+							width: field?.width,
+							height: field?.height,
+						}}
+						className='bg-green-200 '
+						resizeHandleStyles={{
+							bottomRight: {
+								backgroundColor: 'white',
+								border: '1px solid #ddd',
+								width: '10px',
+								height: '10px',
+								bottom: '-4px',
+								right: '-4px',
+							}
+						}}
+						enableResizing={{
+							bottom: false,
+							bottomLeft: false,
+							bottomRight: true,
+							left: false,
+							right: false,
+							top: false,
+							topLeft: false,
+							topRight: false,
+						}}
 
+					>
+						{field?.value}
+					</Rnd>
+				))}
+			</div>
+		</>
 	);
 };
  

@@ -2,21 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.Block{
-  display: flex;
-  align-items: center;
-}
-#Resizable{
-  border: 1px solid black; 
-  height: 200px;
-  width: 200px;
-}
-#Draggable{
-  background: rgba(1, 1, 1, 0.2);
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  border-top: 1px solid black;
-  cursor: col-resize;
-  height: 20px;
-  width: 10px;
-}
+#resizer::-webkit-resizer {
+    border: 1px solid yellowgreen;
+    background: white;
+  }
