@@ -5,7 +5,6 @@ import StoryblokClient from 'storyblok-js-client';
 export default () => {
 	const [stories, setStories] = useState(false);
 	const accessToken = process.env.REACT_APP_STORYBLOK_TOKEN;
-	console.log('Environment Variables:', process.env);
 
 	const getStories = () => {
 		const Storyblok = new StoryblokClient({
